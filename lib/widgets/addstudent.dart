@@ -1,20 +1,17 @@
 // ignore_for_file: non_constant_identifier_names, duplicate_ignore, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:students_1/db/model/models.dart';
 import 'package:students_1/functions/db_function.dart';
+import 'package:students_1/providers/db_function_provider.dart';
 
-// ignore: camel_case_types
-class addstudent extends StatelessWidget {
-  addstudent({super.key});
+class AddStudent extends StatelessWidget {
+  AddStudent({super.key});
 
-  final name_control = TextEditingController();
-
+  var name_control = TextEditingController();
   final age_control = TextEditingController();
-
-  // ignore: non_constant_identifier_names
   final course_control = TextEditingController();
-
   final mark_control = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
@@ -71,8 +68,9 @@ class addstudent extends StatelessWidget {
             ),
             ElevatedButton.icon(
                 onPressed: () {
+                  FocusScope.of(context).unfocus();
                   formKey.currentState!.validate();
-                  addbuttonclick();
+                  addbuttonclick(context);
                   clear();
                 },
                 style: ElevatedButton.styleFrom(
@@ -85,7 +83,7 @@ class addstudent extends StatelessWidget {
     );
   }
 
-  addbuttonclick() async {
+  addbuttonclick(context) async {
     final name = name_control.text;
     final age = age_control.text;
     final course = course_control.text;
@@ -96,7 +94,7 @@ class addstudent extends StatelessWidget {
 
     final res =
         studentmodel(names: name, ages: age, courses: course, marks: mark);
-    addstudentlist(res);
+    Provider.of<DbProvider>(context, listen: false).addstudentlist(res);
   }
 
   void clear() {

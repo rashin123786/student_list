@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:students_1/functions/db_function.dart';
+import 'package:students_1/providers/db_function_provider.dart';
 import 'package:students_1/widgets/addstudent.dart';
 import 'package:students_1/widgets/liststudent.dart';
+import 'package:students_1/widgets/search.dart';
 
 // ignore: camel_case_types
 class homescreen extends StatelessWidget {
@@ -9,13 +12,35 @@ class homescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getallstudent();
+    Provider.of<DbProvider>(context, listen: false).getallstudent();
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Student Details'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SearchScreen(),
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.search,
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            addstudent(),
-            const Expanded(
+            AddStudent(),
+            SizedBox(
+              height: 20,
+            ),
+            Expanded(
               child: liststudent(),
             ),
           ],

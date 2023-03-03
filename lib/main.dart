@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:provider/provider.dart';
 import 'package:students_1/db/model/models.dart';
+import 'package:students_1/providers/db_function_provider.dart';
 import 'package:students_1/widgets/homescreen.dart';
 
 Future<void> main() async {
@@ -17,12 +19,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.deepPurple,
+    return ChangeNotifierProvider(
+      create: (context) => DbProvider(),
+      child: MaterialApp(
+        theme: ThemeData(
+          primaryColor: Colors.deepPurple,
+          primarySwatch: Colors.deepPurple,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const homescreen(),
       ),
-      debugShowCheckedModeBanner: false,
-      home: const homescreen(),
     );
   }
 }
