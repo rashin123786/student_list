@@ -12,7 +12,7 @@ class DbProvider with ChangeNotifier {
 
   List<studentmodel> result = [];
 
-  void SearchResult(String searchtext) {
+  void searchResult(String searchtext) {
     ist = false;
 
     result = studentlistnoti

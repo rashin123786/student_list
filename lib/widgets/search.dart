@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
-import 'package:students_1/db/model/models.dart';
-import 'package:students_1/functions/db_function.dart';
 import 'package:students_1/providers/db_function_provider.dart';
 import 'package:students_1/widgets/studentdetails.dart';
-
-import 'liststudent.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -40,7 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     controller: enterdText,
                     onChanged: (value) =>
                         Provider.of<DbProvider>(context, listen: false)
-                            .SearchResult(value),
+                            .searchResult(value),
                     validator: (value) =>
                         value!.isEmpty ? 'Please Enter a the name' : null,
                     decoration: InputDecoration(
@@ -65,7 +59,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Provider.of<DbProvider>(context).foundetails.isEmpty
@@ -91,7 +85,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      studentdetails(datas: resultdata),
+                                      StudentDetails(datas: resultdata),
                                 ),
                               ),
                             );

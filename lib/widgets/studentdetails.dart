@@ -1,17 +1,10 @@
-// ignore_for_file: unnecessary_import, implementation_imports, unused_import
-
 import 'package:flutter/material.dart';
-
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:students_1/db/model/models.dart';
-
-import 'package:students_1/functions/db_function.dart';
 import 'package:students_1/widgets/updatescreen.dart';
 
-// ignore: camel_case_types
-class studentdetails extends StatelessWidget {
+class StudentDetails extends StatelessWidget {
   final studentmodel datas;
-  const studentdetails({super.key, required this.datas});
+  const StudentDetails({super.key, required this.datas});
 
   @override
   Widget build(BuildContext context) {

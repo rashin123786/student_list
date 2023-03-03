@@ -1,18 +1,17 @@
-// ignore_for_file: non_constant_identifier_names, duplicate_ignore, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:students_1/db/model/models.dart';
-import 'package:students_1/functions/db_function.dart';
+
 import 'package:students_1/providers/db_function_provider.dart';
 
+// ignore: must_be_immutable
 class AddStudent extends StatelessWidget {
   AddStudent({super.key});
 
-  var name_control = TextEditingController();
-  final age_control = TextEditingController();
-  final course_control = TextEditingController();
-  final mark_control = TextEditingController();
+  var nameControl = TextEditingController();
+  final ageControl = TextEditingController();
+  final courseControl = TextEditingController();
+  final markControl = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class AddStudent extends StatelessWidget {
               keyboardType: TextInputType.text,
               validator: (value) =>
                   value!.isEmpty ? 'name cannot be blank' : null,
-              controller: name_control,
+              controller: nameControl,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: 'Name'),
             ),
@@ -37,7 +36,7 @@ class AddStudent extends StatelessWidget {
               keyboardType: TextInputType.number,
               validator: (value) =>
                   value!.isEmpty ? 'age cannot be blank' : null,
-              controller: age_control,
+              controller: ageControl,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: 'Age'),
             ),
@@ -48,22 +47,22 @@ class AddStudent extends StatelessWidget {
               keyboardType: TextInputType.text,
               validator: (value) =>
                   value!.isEmpty ? 'course cannot be blank' : null,
-              controller: course_control,
+              controller: courseControl,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: 'Course'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               keyboardType: TextInputType.number,
               validator: (value) =>
                   value!.isEmpty ? 'mark cannot be blank' : null,
-              controller: mark_control,
-              decoration: InputDecoration(
+              controller: markControl,
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: 'Mark'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ElevatedButton.icon(
@@ -76,7 +75,7 @@ class AddStudent extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepPurple),
                 icon: const Icon(Icons.add),
-                label: Text('Add'))
+                label: const Text('Add'))
           ],
         ),
       ),
@@ -84,10 +83,10 @@ class AddStudent extends StatelessWidget {
   }
 
   addbuttonclick(context) async {
-    final name = name_control.text;
-    final age = age_control.text;
-    final course = course_control.text;
-    final mark = mark_control.text;
+    final name = nameControl.text;
+    final age = ageControl.text;
+    final course = courseControl.text;
+    final mark = markControl.text;
     if (name.isEmpty || age.isEmpty || course.isEmpty || mark.isEmpty) {
       return;
     }
@@ -98,9 +97,9 @@ class AddStudent extends StatelessWidget {
   }
 
   void clear() {
-    name_control.clear();
-    age_control.clear();
-    course_control.clear();
-    mark_control.clear();
+    nameControl.clear();
+    ageControl.clear();
+    courseControl.clear();
+    markControl.clear();
   }
 }

@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:students_1/db/model/models.dart';
-import 'package:students_1/functions/db_function.dart';
-
 import '../providers/db_function_provider.dart';
 
 // ignore: camel_case_types

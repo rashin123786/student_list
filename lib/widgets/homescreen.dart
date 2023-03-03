@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:students_1/functions/db_function.dart';
+
 import 'package:students_1/providers/db_function_provider.dart';
 import 'package:students_1/widgets/addstudent.dart';
 import 'package:students_1/widgets/liststudent.dart';
@@ -16,18 +16,18 @@ class homescreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Student Details'),
+        title: const Text('Student Details'),
         actions: [
           IconButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SearchScreen(),
+                  builder: (context) => const SearchScreen(),
                 ),
               );
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
             ),
           ),
@@ -37,11 +37,11 @@ class homescreen extends StatelessWidget {
         child: Column(
           children: [
             AddStudent(),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Expanded(
-              child: liststudent(),
+            const Expanded(
+              child: ListStudent(),
             ),
           ],
         ),
